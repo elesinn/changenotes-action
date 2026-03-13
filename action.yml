@@ -1,36 +1,36 @@
-name: 'Changenotes Changelog Generator'
-description: 'Generate AI-powered changelogs on release and update release notes automatically'
-author: 'Changenotes'
+name: "Changenotes — AI Changelog Generator"
+description: "Auto-generate categorized release notes from commits and PRs using AI. Updates your GitHub release body on every publish."
+author: "Changenotes"
 
 branding:
-  icon: 'book-open'
-  color: 'purple'
+  icon: "zap"
+  color: "purple"
 
 inputs:
   changenotes-api-key:
-    description: 'Your Changenotes API key (generate at changenotes.app/settings)'
+    description: "Your Changenotes API key (get one free at changenotes.app)"
     required: true
   github-token:
-    description: 'GitHub token for reading commits and updating release notes'
+    description: "GitHub token for reading commits/PRs and updating release notes"
     required: false
     default: ${{ github.token }}
   update-release:
-    description: 'Whether to update the GitHub release body with the generated changelog'
+    description: "Automatically update the GitHub release body with the generated changelog"
     required: false
-    default: 'true'
+    default: "true"
   api-url:
-    description: 'Changenotes API URL (override for self-hosted)'
+    description: "Changenotes API base URL (override for self-hosted)"
     required: false
-    default: 'https://changenotes.app'
+    default: "https://changenotes.app"
 
 outputs:
   changelog:
-    description: 'The generated changelog in Markdown format'
+    description: "The generated changelog in Markdown format"
   tag:
-    description: 'The release tag that was processed'
+    description: "The release tag that was processed"
   previous-tag:
-    description: 'The previous tag used as the base for comparison'
+    description: "The previous tag used as the comparison baseline"
 
 runs:
-  using: 'node20'
-  main: 'dist/index.js'
+  using: "node20"
+  main: "dist/index.js"
